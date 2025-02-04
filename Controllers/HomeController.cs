@@ -15,6 +15,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ViewData["FooterText"] = "Kohei Dunnet, Simon Lotzkar and Ben Nguyen";
         return View();
     }
 
