@@ -191,8 +191,8 @@ namespace COMP4870Assignment1.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedDate", "Description", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "4dd88e21-9663-4deb-879d-1c4c444323c1", null, new DateTime(2025, 2, 2, 1, 59, 35, 211, DateTimeKind.Utc).AddTicks(9951), "Role for contributor", "contributor", null },
-                    { "6db21b04-8823-4bfd-a47b-31b2677ae080", null, new DateTime(2025, 2, 2, 1, 59, 35, 211, DateTimeKind.Utc).AddTicks(9909), "Role for admin", "admin", null }
+                    { "627664f3-9d97-4166-839e-f5db9931e4ff", null, new DateTime(2025, 2, 4, 1, 49, 6, 500, DateTimeKind.Utc).AddTicks(2994), "Role for contributor", "contributor", null },
+                    { "668ef981-9ae3-4438-b0c7-5b4221eb5c63", null, new DateTime(2025, 2, 4, 1, 49, 6, 500, DateTimeKind.Utc).AddTicks(2925), "Role for admin", "admin", null }
                 });
 
             migrationBuilder.InsertData(
@@ -200,22 +200,22 @@ namespace COMP4870Assignment1.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "19f5029a-f85c-433f-8793-56048f003c85", 0, "4c2c89ac-ba97-4745-a7e6-f1db088b1b83", "c@c.c", true, "Contributor", "User", false, null, null, null, "AQAAAAIAAYagAAAAEEWW9mtVaQAzonhmWEEWA/77BmvPlWN4vS7+0j+98PBmN4lW9vgXZE7t3kdDVBzw2Q==", null, false, "68b0d68f-9f24-42b4-a87b-59e40cc932f7", false, "c@c.c" },
-                    { "728491d1-d228-4983-84e4-4a016314f3a3", 0, "e1adbd6f-d1f9-41e8-b1d7-36cf70f981ae", "a@a.a", true, "Admin", "User", false, null, null, null, "AQAAAAIAAYagAAAAEH++a8tz6ZynQ+jY8l2c98UjwN0F9OF2Vn+vaAhGstDFAVQtTMOWLL2OBdQcBYdSlQ==", null, false, "cd3835eb-612b-4023-b4ca-5bee0e8c7873", false, "a@a.a" }
+                    { "1ce64d45-97b5-497d-bda8-7d62f5aff205", 0, "0484212c-e90c-45f0-b53c-826b38f18d0b", "a@a.a", true, "Admin", "User", false, null, null, null, "AQAAAAIAAYagAAAAENiNRggtxC2+ydiaTUtcLVl21pFVFUc+QTtOzNZB6huujq8Nyldbu+7B/hGKXZqZHg==", null, false, "c9fb2d64-fea8-416f-a402-81002519370c", false, "a@a.a" },
+                    { "f3f465ba-8a2e-4205-8e46-6b62147ba178", 0, "509abbea-6fbb-4d33-9f53-8b2cdd87fb8c", "c@c.c", true, "Contributor", "User", false, null, null, null, "AQAAAAIAAYagAAAAEBbF/kljA9u7n6zaphzzYuSSZ6jofIxZSZlPm0KnU7zlUY2bu5RGZVGQzMpC2myFAA==", null, false, "9d1951aa-1792-4397-b950-8cb282cb365d", false, "c@c.c" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Articles",
                 columns: new[] { "ArticleId", "Body", "CreateDate", "Email", "EndDate", "StartDate", "Title", "UserId" },
-                values: new object[] { 1, "Five new fires have erupted in southern California. The blazes - named Laguna, Sepulveda, Gibbel, Gilman and Border 2 - flared up on Thursday in the counties", new DateTime(2024, 12, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "c@c.c", new DateTime(2025, 3, 4, 1, 59, 35, 303, DateTimeKind.Utc).AddTicks(291), new DateTime(2025, 2, 2, 1, 59, 35, 303, DateTimeKind.Utc).AddTicks(287), "New fires erupt in southern California", "19f5029a-f85c-433f-8793-56048f003c85" });
+                values: new object[] { 1, "Five new fires have erupted in southern California. The blazes - named Laguna, Sepulveda, Gibbel, Gilman and Border 2 - flared up on Thursday in the counties", new DateTime(2024, 12, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "c@c.c", new DateTime(2025, 3, 6, 1, 49, 6, 582, DateTimeKind.Utc).AddTicks(3519), new DateTime(2025, 2, 4, 1, 49, 6, 582, DateTimeKind.Utc).AddTicks(3516), "New fires erupt in southern California", "f3f465ba-8a2e-4205-8e46-6b62147ba178" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "4dd88e21-9663-4deb-879d-1c4c444323c1", "19f5029a-f85c-433f-8793-56048f003c85" },
-                    { "6db21b04-8823-4bfd-a47b-31b2677ae080", "728491d1-d228-4983-84e4-4a016314f3a3" }
+                    { "668ef981-9ae3-4438-b0c7-5b4221eb5c63", "1ce64d45-97b5-497d-bda8-7d62f5aff205" },
+                    { "627664f3-9d97-4166-839e-f5db9931e4ff", "f3f465ba-8a2e-4205-8e46-6b62147ba178" }
                 });
 
             migrationBuilder.CreateIndex(

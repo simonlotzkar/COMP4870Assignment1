@@ -56,10 +56,10 @@ namespace COMP4870Assignment1.Data.Migrations
                             Body = "Five new fires have erupted in southern California. The blazes - named Laguna, Sepulveda, Gibbel, Gilman and Border 2 - flared up on Thursday in the counties",
                             CreateDate = new DateTime(2024, 12, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "c@c.c",
-                            EndDate = new DateTime(2025, 3, 4, 1, 59, 35, 303, DateTimeKind.Utc).AddTicks(291),
-                            StartDate = new DateTime(2025, 2, 2, 1, 59, 35, 303, DateTimeKind.Utc).AddTicks(287),
+                            EndDate = new DateTime(2025, 3, 6, 1, 49, 6, 582, DateTimeKind.Utc).AddTicks(3519),
+                            StartDate = new DateTime(2025, 2, 4, 1, 49, 6, 582, DateTimeKind.Utc).AddTicks(3516),
                             Title = "New fires erupt in southern California",
-                            UserId = "19f5029a-f85c-433f-8793-56048f003c85"
+                            UserId = "f3f465ba-8a2e-4205-8e46-6b62147ba178"
                         });
                 });
 
@@ -97,15 +97,15 @@ namespace COMP4870Assignment1.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6db21b04-8823-4bfd-a47b-31b2677ae080",
-                            CreatedDate = new DateTime(2025, 2, 2, 1, 59, 35, 211, DateTimeKind.Utc).AddTicks(9909),
+                            Id = "668ef981-9ae3-4438-b0c7-5b4221eb5c63",
+                            CreatedDate = new DateTime(2025, 2, 4, 1, 49, 6, 500, DateTimeKind.Utc).AddTicks(2925),
                             Description = "Role for admin",
                             Name = "admin"
                         },
                         new
                         {
-                            Id = "4dd88e21-9663-4deb-879d-1c4c444323c1",
-                            CreatedDate = new DateTime(2025, 2, 2, 1, 59, 35, 211, DateTimeKind.Utc).AddTicks(9951),
+                            Id = "627664f3-9d97-4166-839e-f5db9931e4ff",
+                            CreatedDate = new DateTime(2025, 2, 4, 1, 49, 6, 500, DateTimeKind.Utc).AddTicks(2994),
                             Description = "Role for contributor",
                             Name = "contributor"
                         });
@@ -183,33 +183,33 @@ namespace COMP4870Assignment1.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "728491d1-d228-4983-84e4-4a016314f3a3",
+                            Id = "1ce64d45-97b5-497d-bda8-7d62f5aff205",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e1adbd6f-d1f9-41e8-b1d7-36cf70f981ae",
+                            ConcurrencyStamp = "0484212c-e90c-45f0-b53c-826b38f18d0b",
                             Email = "a@a.a",
                             EmailConfirmed = true,
                             FirstName = "Admin",
                             LastName = "User",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEH++a8tz6ZynQ+jY8l2c98UjwN0F9OF2Vn+vaAhGstDFAVQtTMOWLL2OBdQcBYdSlQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENiNRggtxC2+ydiaTUtcLVl21pFVFUc+QTtOzNZB6huujq8Nyldbu+7B/hGKXZqZHg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cd3835eb-612b-4023-b4ca-5bee0e8c7873",
+                            SecurityStamp = "c9fb2d64-fea8-416f-a402-81002519370c",
                             TwoFactorEnabled = false,
                             UserName = "a@a.a"
                         },
                         new
                         {
-                            Id = "19f5029a-f85c-433f-8793-56048f003c85",
+                            Id = "f3f465ba-8a2e-4205-8e46-6b62147ba178",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4c2c89ac-ba97-4745-a7e6-f1db088b1b83",
+                            ConcurrencyStamp = "509abbea-6fbb-4d33-9f53-8b2cdd87fb8c",
                             Email = "c@c.c",
                             EmailConfirmed = true,
                             FirstName = "Contributor",
                             LastName = "User",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEEWW9mtVaQAzonhmWEEWA/77BmvPlWN4vS7+0j+98PBmN4lW9vgXZE7t3kdDVBzw2Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBbF/kljA9u7n6zaphzzYuSSZ6jofIxZSZlPm0KnU7zlUY2bu5RGZVGQzMpC2myFAA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "68b0d68f-9f24-42b4-a87b-59e40cc932f7",
+                            SecurityStamp = "9d1951aa-1792-4397-b950-8cb282cb365d",
                             TwoFactorEnabled = false,
                             UserName = "c@c.c"
                         });
@@ -302,13 +302,13 @@ namespace COMP4870Assignment1.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "728491d1-d228-4983-84e4-4a016314f3a3",
-                            RoleId = "6db21b04-8823-4bfd-a47b-31b2677ae080"
+                            UserId = "1ce64d45-97b5-497d-bda8-7d62f5aff205",
+                            RoleId = "668ef981-9ae3-4438-b0c7-5b4221eb5c63"
                         },
                         new
                         {
-                            UserId = "19f5029a-f85c-433f-8793-56048f003c85",
-                            RoleId = "4dd88e21-9663-4deb-879d-1c4c444323c1"
+                            UserId = "f3f465ba-8a2e-4205-8e46-6b62147ba178",
+                            RoleId = "627664f3-9d97-4166-839e-f5db9931e4ff"
                         });
                 });
 
