@@ -1,8 +1,22 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    var articles = ViewData["Articles"] as List<COMP4870Assignment1.Models.Articles>; 
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    @foreach (var article in articles!)
+    {
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title">@article.Title</h5>
+                <small class="text-muted">By @article.Email</small>
+            </div>
+            <div class="card-body">
+                <p class="card-text text-muted">
+                    <strong>Created:</strong> @article.CreateDate.ToString("MMMM dd, yyyy") |
+                    <strong>Active:</strong> @article.StartDate.ToString("MMMM dd, yyyy") - @article.EndDate.ToString("MMMM dd, yyyy")
+                </p>
+                <div class="article-body">
+                    @Html.Raw(article.Body ?? "No content available")
+                </div>
+            </div>
+        </div>
+    }

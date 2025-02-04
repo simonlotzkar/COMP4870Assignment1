@@ -6,16 +6,20 @@ namespace COMP4870Assignment1.Controllers;
 
 public class HomeController : Controller
 {
+    private readonly ApplicationDbContext _context;
     private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+ 
+    public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
     {
         _logger = logger;
+        _context = context;
     }
 
     public IActionResult Index()
     {
         ViewData["FooterText"] = "Kohei Dunnet, Simon Lotzkar and Ben Nguyen";
+        var articles = _context.Articles.ToList();
+        ViewData["Articles"] = articles;
         return View();
     }
 
