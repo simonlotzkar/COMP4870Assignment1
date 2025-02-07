@@ -17,9 +17,26 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        // This is used to determine what to display on the index page navbar
+        if (User.IsInRole("admin"))
+        {
+            ViewData["Role"] = "admin";
+        }
+        else if (User.IsInRole("contributor"))
+        {
+            ViewData["Role"] = "contributor";
+        }
+        else
+        {
+            ViewData["Role"] = "unknown";
+        }
+
         ViewData["FooterText"] = "Kohei Dunnet, Simon Lotzkar and Ben Nguyen";
         var articles = _context.Articles.ToList();
+
+        // Passing articles to the view so they can be displayed
         ViewData["Articles"] = articles;
+        
         return View();
     }
 

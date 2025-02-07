@@ -1,0 +1,48 @@
+﻿@using Microsoft.AspNetCore.Identity
+@{
+    /**
+    * Admin Page for creating a user.
+    * the logic for the methods are inside of the article controller
+    **/
+    ViewData["Title"] = "Manage Users";
+    var users = ViewData["Users"] as List<CustomUser>;
+    
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in users!)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>
+                    @inject UserManager<CustomUser> UserManager
+
+                    @if (!(await UserManager.IsInRoleAsync(user, "Contributor")))
+                    {
+                        <form method="post" asp-controller="Article" asp-action="MakeContributor" asp-route-userId="@user.Id">
+                            <button type="submit" class="btn btn-primary">Make Contributor</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <span>Already a Contributor</span>
+                    }
+
+
+                    <form method="post" asp-controller="Article" asp-action="DeleteContributor" asp-route-userId="@user.Id">
+                        <button type="submit" class="btn btn-danger">Remove User</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

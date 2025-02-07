@@ -48,19 +48,6 @@ namespace COMP4870Assignment1.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Articles");
-
-                    b.HasData(
-                        new
-                        {
-                            ArticleId = 1,
-                            Body = "Five new fires have erupted in southern California. The blazes - named Laguna, Sepulveda, Gibbel, Gilman and Border 2 - flared up on Thursday in the counties",
-                            CreateDate = new DateTime(2024, 12, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "c@c.c",
-                            EndDate = new DateTime(2025, 3, 6, 1, 49, 6, 582, DateTimeKind.Utc).AddTicks(3519),
-                            StartDate = new DateTime(2025, 2, 4, 1, 49, 6, 582, DateTimeKind.Utc).AddTicks(3516),
-                            Title = "New fires erupt in southern California",
-                            UserId = "f3f465ba-8a2e-4205-8e46-6b62147ba178"
-                        });
                 });
 
             modelBuilder.Entity("COMP4870Assignment1.Models.CustomRole", b =>
@@ -93,22 +80,6 @@ namespace COMP4870Assignment1.Data.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "668ef981-9ae3-4438-b0c7-5b4221eb5c63",
-                            CreatedDate = new DateTime(2025, 2, 4, 1, 49, 6, 500, DateTimeKind.Utc).AddTicks(2925),
-                            Description = "Role for admin",
-                            Name = "admin"
-                        },
-                        new
-                        {
-                            Id = "627664f3-9d97-4166-839e-f5db9931e4ff",
-                            CreatedDate = new DateTime(2025, 2, 4, 1, 49, 6, 500, DateTimeKind.Utc).AddTicks(2994),
-                            Description = "Role for contributor",
-                            Name = "contributor"
-                        });
                 });
 
             modelBuilder.Entity("COMP4870Assignment1.Models.CustomUser", b =>
@@ -179,40 +150,6 @@ namespace COMP4870Assignment1.Data.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "1ce64d45-97b5-497d-bda8-7d62f5aff205",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "0484212c-e90c-45f0-b53c-826b38f18d0b",
-                            Email = "a@a.a",
-                            EmailConfirmed = true,
-                            FirstName = "Admin",
-                            LastName = "User",
-                            LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAENiNRggtxC2+ydiaTUtcLVl21pFVFUc+QTtOzNZB6huujq8Nyldbu+7B/hGKXZqZHg==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "c9fb2d64-fea8-416f-a402-81002519370c",
-                            TwoFactorEnabled = false,
-                            UserName = "a@a.a"
-                        },
-                        new
-                        {
-                            Id = "f3f465ba-8a2e-4205-8e46-6b62147ba178",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "509abbea-6fbb-4d33-9f53-8b2cdd87fb8c",
-                            Email = "c@c.c",
-                            EmailConfirmed = true,
-                            FirstName = "Contributor",
-                            LastName = "User",
-                            LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEBbF/kljA9u7n6zaphzzYuSSZ6jofIxZSZlPm0KnU7zlUY2bu5RGZVGQzMpC2myFAA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "9d1951aa-1792-4397-b950-8cb282cb365d",
-                            TwoFactorEnabled = false,
-                            UserName = "c@c.c"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -298,18 +235,6 @@ namespace COMP4870Assignment1.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "1ce64d45-97b5-497d-bda8-7d62f5aff205",
-                            RoleId = "668ef981-9ae3-4438-b0c7-5b4221eb5c63"
-                        },
-                        new
-                        {
-                            UserId = "f3f465ba-8a2e-4205-8e46-6b62147ba178",
-                            RoleId = "627664f3-9d97-4166-839e-f5db9931e4ff"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

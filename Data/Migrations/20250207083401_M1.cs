@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
 namespace COMP4870Assignment1.Data.Migrations
 {
     /// <inheritdoc />
@@ -184,38 +182,6 @@ namespace COMP4870Assignment1.Data.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "CreatedDate", "Description", "Name", "NormalizedName" },
-                values: new object[,]
-                {
-                    { "627664f3-9d97-4166-839e-f5db9931e4ff", null, new DateTime(2025, 2, 4, 1, 49, 6, 500, DateTimeKind.Utc).AddTicks(2994), "Role for contributor", "contributor", null },
-                    { "668ef981-9ae3-4438-b0c7-5b4221eb5c63", null, new DateTime(2025, 2, 4, 1, 49, 6, 500, DateTimeKind.Utc).AddTicks(2925), "Role for admin", "admin", null }
-                });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[,]
-                {
-                    { "1ce64d45-97b5-497d-bda8-7d62f5aff205", 0, "0484212c-e90c-45f0-b53c-826b38f18d0b", "a@a.a", true, "Admin", "User", false, null, null, null, "AQAAAAIAAYagAAAAENiNRggtxC2+ydiaTUtcLVl21pFVFUc+QTtOzNZB6huujq8Nyldbu+7B/hGKXZqZHg==", null, false, "c9fb2d64-fea8-416f-a402-81002519370c", false, "a@a.a" },
-                    { "f3f465ba-8a2e-4205-8e46-6b62147ba178", 0, "509abbea-6fbb-4d33-9f53-8b2cdd87fb8c", "c@c.c", true, "Contributor", "User", false, null, null, null, "AQAAAAIAAYagAAAAEBbF/kljA9u7n6zaphzzYuSSZ6jofIxZSZlPm0KnU7zlUY2bu5RGZVGQzMpC2myFAA==", null, false, "9d1951aa-1792-4397-b950-8cb282cb365d", false, "c@c.c" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Articles",
-                columns: new[] { "ArticleId", "Body", "CreateDate", "Email", "EndDate", "StartDate", "Title", "UserId" },
-                values: new object[] { 1, "Five new fires have erupted in southern California. The blazes - named Laguna, Sepulveda, Gibbel, Gilman and Border 2 - flared up on Thursday in the counties", new DateTime(2024, 12, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "c@c.c", new DateTime(2025, 3, 6, 1, 49, 6, 582, DateTimeKind.Utc).AddTicks(3519), new DateTime(2025, 2, 4, 1, 49, 6, 582, DateTimeKind.Utc).AddTicks(3516), "New fires erupt in southern California", "f3f465ba-8a2e-4205-8e46-6b62147ba178" });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUserRoles",
-                columns: new[] { "RoleId", "UserId" },
-                values: new object[,]
-                {
-                    { "668ef981-9ae3-4438-b0c7-5b4221eb5c63", "1ce64d45-97b5-497d-bda8-7d62f5aff205" },
-                    { "627664f3-9d97-4166-839e-f5db9931e4ff", "f3f465ba-8a2e-4205-8e46-6b62147ba178" }
                 });
 
             migrationBuilder.CreateIndex(

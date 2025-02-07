@@ -48,9 +48,14 @@ app.MapRazorPages();
 
 using (var scope = app.Services.CreateScope()) {
     var services = scope.ServiceProvider;
-
     var context = services.GetRequiredService<ApplicationDbContext>();    
+    var roleManager = services.GetRequiredService<RoleManager<CustomRole>>();
+    var userManager = services.GetRequiredService<UserManager<CustomUser>>();
+
     context.Database.Migrate();
+    
+    var seeder = new SeedUsersRolesArticles(roleManager, userManager, context);
+    await seeder.SeedDataAsync(); 
 }
 
 app.Run();
