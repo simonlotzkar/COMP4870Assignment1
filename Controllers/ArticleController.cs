@@ -27,8 +27,15 @@ namespace COMP4870Assignment1.Controllers
 
         // View for contributor
         [Authorize(Roles = "contributor")]
-        public ActionResult Contributor()
+        public async Task<ActionResult> Contributor()
         {
+            var user = await _userManager.GetUserAsync(User);
+
+            var articles = _context.Articles
+                .Where(a => a.UserId == user!.Id)
+                .ToList();
+
+            ViewData["Article"] = articles;
             return View();
         }
 
@@ -66,6 +73,90 @@ namespace COMP4870Assignment1.Controllers
             }
 
             return RedirectToAction("Admin"); 
+        }
+
+        // Action for creating an article
+        [Authorize(Roles = "contributor")]
+        public ActionResult Create()
+        {
+            var article = new Articles
+            {
+                CreateDate = DateTime.UtcNow,
+                StartDate = DateTime.UtcNow
+            };
+            return View(article);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "contributor")]
+        public async Task<IActionResult> Create(Articles article)
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            article.UserId = user!.Id;
+            article.EndDate = DateTime.UtcNow;
+            article.Email = user.Email;
+            _context.Add(article);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Contributor");
+        }
+
+        // Action for editing an article
+        [Authorize(Roles = "contributor")]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var article = await _context.Articles.FindAsync(id);
+            var user = await _userManager.GetUserAsync(User);
+
+            if (article == null || article.UserId != user!.Id)
+            {
+                return Unauthorized();
+            }
+
+            return View(article);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "contributor")]
+        public async Task<IActionResult> Edit(Articles article)
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            article.Email = user!.Email;
+            article.EndDate = DateTime.UtcNow;
+
+            if (article.UserId != user!.Id)
+            {
+                return Unauthorized();
+            }
+
+            if (ModelState.IsValid)
+            {
+                _context.Update(article);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Contributor");
+            }
+            return View(article);
+        }
+
+        // Action for deleting an article
+        [HttpPost]
+        [Authorize(Roles = "contributor")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var article = await _context.Articles.FindAsync(id);
+            var user = await _userManager.GetUserAsync(User);
+
+            if (article == null || article.UserId != user!.Id)
+            {
+                return Unauthorized();
+            }
+
+            _context.Articles.Remove(article);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Contributor");
         }
     }
 }

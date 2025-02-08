@@ -23,13 +23,9 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            
                             @if (ViewData["role"]?.ToString() == "contributor") {
                                 // Currently this is deciding which one to show either create contributor or edit user
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="Contributors">Create Article</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="Contributor">Manage Article</a>
                             } 
                             else if (ViewData["role"]?.ToString() == "admin") {
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Article" asp-action="Admin">Edit Users</a>

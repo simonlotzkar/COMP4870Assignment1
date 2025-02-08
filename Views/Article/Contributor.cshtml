@@ -1,6 +1,46 @@
-﻿@{
-    /**
-    * Currently empty contributor page and there is no logic for it either in the article controller.
-    **/
+﻿@using Microsoft.AspNetCore.Identity
+@{
+    ViewData["Title"] = "Manage Articles";
+    var articles = ViewData["Article"] as List<Articles>;
 }
-   
+
+<h2>@ViewData["Title"]</h2>
+
+<a class="btn btn-primary" asp-area="" asp-controller="Article" asp-action="Create">Create New Article</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Body</th>
+            <th>Create Date</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var article in articles!)
+        {
+            <tr>
+                <td>@article.ArticleId</td>
+                <td>@article.Title</td>
+                <td>@article.Body</td>
+                <td>@article.CreateDate</td>
+                <td>@article.StartDate</td>
+                <td>@article.EndDate</td>
+                <td>@article.Email</td>
+                <td>
+                    <div style="display:flex; gap:5px;">
+                        <a class="btn btn-primary" asp-controller="Article" asp-action="Edit" asp-route-id="@article.ArticleId">Edit</a>
+                        <form method="post" asp-controller="Article" asp-action="Delete" asp-route-id="@article.ArticleId">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
