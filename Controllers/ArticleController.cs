@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using COMP4870Assignment1.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace COMP4870Assignment1.Controllers
 {
@@ -162,7 +163,7 @@ namespace COMP4870Assignment1.Controllers
 
         public IActionResult Details(int id)
         {
-            var article = _context.Articles.FirstOrDefault(a => a.ArticleId == id);
+            var article = _context.Articles.Include(a => a.User).FirstOrDefault(a => a.ArticleId == id);
             if (article == null)
             {
                 return NotFound();

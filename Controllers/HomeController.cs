@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using COMP4870Assignment1.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace COMP4870Assignment1.Controllers;
 
@@ -32,7 +33,7 @@ public class HomeController : Controller
         }
 
         ViewData["FooterText"] = "Kohei Dunnet, Simon Lotzkar and Ben Nguyen";
-        var articles = _context.Articles.ToList();
+        var articles = _context.Articles.Include(a => a.User).ToList();
 
         // Passing articles to the view so they can be displayed
         ViewData["Articles"] = articles;

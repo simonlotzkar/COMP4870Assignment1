@@ -2,9 +2,24 @@
 
 <div style="max-width: 800px; margin: auto; padding: 16px;">
     <h1 style="font-size: 24px; font-weight: bold; color: #333;">@Model.Title</h1>
-    <p style="font-size: 14px; color: #666;">By @Model.Email</p>
+    <p style="font-size: 14px; color: #666;">
+        @if (@Model.User != null)
+        {
+            @Model.User.FirstName
+            <span></span>
+            @Model.User.LastName
+        }
+        else
+        {
+            <span style="color: red;">User data not available</span>
+        }
+    </p>
     <p style="color: #444; margin-top: 8px;">@Model.Body</p>
-    <div style="font-size: 12px; color: #777; margin-top: 16px;">Published on @Model.CreateDate.ToShortDateString()
+    <div style="font-size: 12px; color: #777; margin-top: 16px;">
+        Available: @Model.StartDate.ToShortDateString() until @Model.EndDate.ToShortDateString()
+    </div>
+        <div style="font-size: 12px; color: #777; margin-top: 16px;">
+        Created: @Model.CreateDate.ToShortDateString()
     </div>
     <a asp-controller="Home" asp-action="Index"
         style="display: block; margin-top: 16px; color: blue; text-decoration: none;">Back to Home</a>
