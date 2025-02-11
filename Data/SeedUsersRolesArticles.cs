@@ -87,9 +87,9 @@ public class SeedUsersRolesArticles
                     ArticleId = 1,
                     Title = "The Basics of Stock Market Investing for Beginners",
                     Body = "The stock market is where investors buy and sell shares of publicly traded companies. Key players include exchanges like the NYSE and NASDAQ. Beginners should understand stock types (common vs. preferred), risk tolerance, and diversification. Investing can be done through individual stocks, ETFs, or mutual funds. Patience and research are crucial for long-term success.",
-                    CreateDate = new DateTime(2024, 10, 21),
-                    StartDate = new DateTime(2024, 10, 21),
-                    EndDate = new DateTime(2024, 11, 20),
+                    CreateDate = new DateTime(2024, 02, 01),
+                    StartDate = new DateTime(2024, 02, 11),
+                    EndDate = new DateTime(2024, 02, 27),
                     UserId = contributorUser1.Id,
                     Email = contributorUser1.Email
                 },

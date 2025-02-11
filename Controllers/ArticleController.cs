@@ -83,7 +83,6 @@ namespace COMP4870Assignment1.Controllers
             var article = new Articles
             {
                 CreateDate = DateTime.UtcNow,
-                StartDate = DateTime.UtcNow
             };
             return View(article);
         }
@@ -95,7 +94,7 @@ namespace COMP4870Assignment1.Controllers
             var user = await _userManager.GetUserAsync(User);
 
             article.UserId = user!.Id;
-            article.EndDate = DateTime.UtcNow;
+            article.CreateDate = DateTime.UtcNow;
             article.Email = user.Email;
             _context.Add(article);
             await _context.SaveChangesAsync();
@@ -125,7 +124,7 @@ namespace COMP4870Assignment1.Controllers
             var user = await _userManager.GetUserAsync(User);
 
             article.Email = user!.Email;
-            article.EndDate = DateTime.UtcNow;
+            article.CreateDate = DateTime.UtcNow;
 
             if (article.UserId != user!.Id)
             {

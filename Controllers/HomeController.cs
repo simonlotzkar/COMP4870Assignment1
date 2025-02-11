@@ -9,7 +9,7 @@ public class HomeController : Controller
 {
     private readonly ApplicationDbContext _context;
     private readonly ILogger<HomeController> _logger;
- 
+
     public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
     {
         _logger = logger;
@@ -33,11 +33,15 @@ public class HomeController : Controller
         }
 
         ViewData["FooterText"] = "Kohei Dunnet, Simon Lotzkar and Ben Nguyen";
-        var articles = _context.Articles.Include(a => a.User).ToList();
-
+        // Filter articles to include only those that are not expired (within start and end dates)
+        var currentDate = DateTime.Now;
+        var articles = _context.Articles
+            .Where(a => a.StartDate <= currentDate && a.EndDate >= currentDate) // Check if the article is within the date range
+            .Include(a => a.User) // Ensure the User is included
+            .ToList();
         // Passing articles to the view so they can be displayed
         ViewData["Articles"] = articles;
-        
+
         return View();
     }
 

@@ -20,7 +20,7 @@ public class Articles
 
     public string? UserId { get; set; }
 
-    [ForeignKey("UserId")]  
+    [ForeignKey("UserId")]
     public CustomUser? User { get; set; }
 
     public string? Email { get; set; }
