@@ -9,7 +9,7 @@ public class SeedUsersRolesArticles
     private readonly ApplicationDbContext _context;
 
     public SeedUsersRolesArticles(
-        RoleManager<CustomRole> roleManager, 
+        RoleManager<CustomRole> roleManager,
         UserManager<CustomUser> userManager,
         ApplicationDbContext context)
     {
@@ -35,9 +35,12 @@ public class SeedUsersRolesArticles
 
         foreach (var role in roles)
         {
-            if (!await _roleManager.RoleExistsAsync(role.Name))
+            if (!string.IsNullOrEmpty(role.Name))
             {
-                await _roleManager.CreateAsync(role);
+                if (!await _roleManager.RoleExistsAsync(role.Name))
+                {
+                    await _roleManager.CreateAsync(role);
+                }
             }
         }
     }

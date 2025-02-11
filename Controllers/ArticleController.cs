@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using COMP4870Assignment1.Models;  
+using COMP4870Assignment1.Models;
 
 namespace COMP4870Assignment1.Controllers
 {
@@ -15,8 +15,8 @@ namespace COMP4870Assignment1.Controllers
     public class ArticleController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<CustomUser> _userManager;  
-        private readonly RoleManager<CustomRole> _roleManager;  
+        private readonly UserManager<CustomUser> _userManager;
+        private readonly RoleManager<CustomRole> _roleManager;
 
         public ArticleController(ApplicationDbContext context, UserManager<CustomUser> userManager, RoleManager<CustomRole> roleManager)
         {
@@ -39,40 +39,40 @@ namespace COMP4870Assignment1.Controllers
             return View();
         }
 
-         // View for admin
+        // View for admin
         [Authorize(Roles = "admin")]
         public ActionResult Admin()
         {
-            ViewData["Users"] = _context.Users.ToList();  
+            ViewData["Users"] = _context.Users.ToList();
             return View();
         }
 
-         // Action for creating a contributor
-        [HttpPost]  
+        // Action for creating a contributor
+        [HttpPost]
         public async Task<IActionResult> MakeContributor(string userId)
         {
-            var user = await _userManager.FindByIdAsync(userId);  
+            var user = await _userManager.FindByIdAsync(userId);
 
-            if (user != null && !await _userManager.IsInRoleAsync(user, "Contributor")) 
+            if (user != null && !await _userManager.IsInRoleAsync(user, "Contributor"))
             {
                 await _userManager.AddToRoleAsync(user, "Contributor");
             }
 
-            return RedirectToAction("Admin"); 
+            return RedirectToAction("Admin");
         }
 
         // Action for deleting a contributor
-        [HttpPost]  
+        [HttpPost]
         public async Task<IActionResult> DeleteContributor(string userId)
         {
-            var user = await _userManager.FindByIdAsync(userId);  
+            var user = await _userManager.FindByIdAsync(userId);
 
-            if (user != null) 
+            if (user != null)
             {
                 await _userManager.DeleteAsync(user);
             }
 
-            return RedirectToAction("Admin"); 
+            return RedirectToAction("Admin");
         }
 
         // Action for creating an article
@@ -157,6 +157,17 @@ namespace COMP4870Assignment1.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Contributor");
+        }
+
+
+        public IActionResult Details(int id)
+        {
+            var article = _context.Articles.FirstOrDefault(a => a.ArticleId == id);
+            if (article == null)
+            {
+                return NotFound();
+            }
+            return View(article);
         }
     }
 }

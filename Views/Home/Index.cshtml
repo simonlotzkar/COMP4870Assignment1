@@ -8,16 +8,23 @@
     {
         @foreach (var article in articles)
         {
-            <div style="background-color: white; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); border-radius: 8px; padding: 16px; border: 1px solid #ddd; flex: 1 1 calc(33.333% - 32px); min-width: 300px; max-width: 100%;">
+            <div
+                style="background-color: white; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); border-radius: 8px; padding: 16px; border: 1px solid #ddd; flex: 1 1 calc(33.333% - 32px); min-width: 300px; max-width: 100%;">
                 <h2 style="font-size: 18px; font-weight: bold; color: #333;">@article.Title</h2>
                 <p style="font-size: 14px; color: #666;">By @article.Email</p>
-                <p style="color: #444; margin-top: 8px;">@article.Body</p>
-                <div style="font-size: 12px; color: #777; margin-top: 16px;">Published on @article.CreateDate.ToShortDateString()</div>
-                <div style="margin-top: 8px; display: flex; justify-content: space-between; font-size: 12px; color: #999;">
-                    <span>Start: @article.StartDate.ToShortDateString()</span>
-                    <span>End: @article.EndDate.ToShortDateString()</span>
-                </div>
+                <p style="color: #444; margin-top: 8px;">
+                    @(article.Body != null && article.Body.Length > 100 ? article.Body.Substring(0, 100) + "..." : article.Body
+                                ?? "No content available")
+            </p>
+            <a asp-controller="Article" asp-action="Details" asp-route-id="@article.ArticleId"
+                style="color: blue; text-decoration: none;">Read More</a>
+            <div style="font-size: 12px; color: #777; margin-top: 16px;">Published on
+                @article.CreateDate.ToShortDateString()</div>
+            <div style="margin-top: 8px; display: flex; justify-content: space-between; font-size: 12px; color: #999;">
+                <span>Start: @article.StartDate.ToShortDateString()</span>
+                <span>End: @article.EndDate.ToShortDateString()</span>
             </div>
+        </div>
         }
     }
     else
