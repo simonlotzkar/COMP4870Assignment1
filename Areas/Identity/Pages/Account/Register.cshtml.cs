@@ -88,7 +88,7 @@ namespace COMP4870Assignment1.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [EmailAddress]
+            [EmailAddress(ErrorMessage = "The Email field is not a valid e-mail address.")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
@@ -97,9 +97,10 @@ namespace COMP4870Assignment1.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
+            [PasswordRequirements]
             public string Password { get; set; }
 
             /// <summary>

@@ -80,11 +80,7 @@ namespace COMP4870Assignment1.Controllers
         [Authorize(Roles = "contributor")]
         public ActionResult Create()
         {
-            var article = new Articles
-            {
-                CreateDate = DateTime.UtcNow,
-            };
-            return View(article);
+            return View();
         }
 
         [HttpPost]
@@ -94,7 +90,7 @@ namespace COMP4870Assignment1.Controllers
             var user = await _userManager.GetUserAsync(User);
 
             article.UserId = user!.Id;
-            article.CreateDate = DateTime.UtcNow;
+            article.CreateDate = DateTime.Now;
             article.Email = user.Email;
             _context.Add(article);
             await _context.SaveChangesAsync();
@@ -124,7 +120,7 @@ namespace COMP4870Assignment1.Controllers
             var user = await _userManager.GetUserAsync(User);
 
             article.Email = user!.Email;
-            article.CreateDate = DateTime.UtcNow;
+            article.CreateDate = DateTime.Now;
 
             if (article.UserId != user!.Id)
             {
