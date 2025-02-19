@@ -120,7 +120,6 @@ namespace COMP4870Assignment1.Controllers
             var user = await _userManager.GetUserAsync(User);
 
             article.Email = user!.Email;
-            article.CreateDate = DateTime.Now;
 
             if (article.UserId != user!.Id)
             {
