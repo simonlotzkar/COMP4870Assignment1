@@ -3,43 +3,44 @@
     var articles = ViewData["Articles"] as List<Articles>;
 }
 
-<div style="display: grid; gap: 16px; padding: 16px; width: 100%;">
-    @if (articles != null && articles.Any())
-    {
-        @foreach (var article in articles)
+<div class="container mt-4">
+    <div class="row g-4">
+        @if (articles != null && articles.Any())
         {
-            <div
-                style="background-color: white; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); border-radius: 8px; padding: 16px; border: 1px solid #ddd; flex: 1 1 calc(33.333% - 32px); min-width: 300px; max-width: 100%;">
-                <h2 style="font-size: 18px; font-weight: bold; color: #333;">@article.Title</h2>
-                <p style="font-size: 14px; color: #666;">
-                    @if (article.User != null)
-                    {
-                        @article.User.FirstName
-                        <span></span>
-                        @article.User.LastName
-                    }
-                    else
-                    {
-                        <span style="color: red;">User data not available</span>
-                    }
-                , @article.CreateDate.ToShortDateString()
-            </p>
+            @foreach (var article in articles)
+            {
+                <div class="col-md-4">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-body">
+                            <h2 class="h5 fw-bold text-dark">@article.Title</h2>
+                            <p class="text-muted small">
+                                @if (article.User != null)
+                                {
+                                    @($"{article.User.FirstName} {article.User.LastName}")
+                                }
+                                else
+                                {
+                                    <span class="text-danger">User data not available</span>
+                                }, @article.CreateDate.ToShortDateString()
+                            </p>
 
-            <p style="color: #444; margin-top: 8px;">
-                @(article.Body != null && article.Body.Length > 100 ? article.Body.Substring(0, 100) : article.Body
-                            ?? "No content available")
-                <a asp-controller="Article" asp-action="Details" asp-route-id="@article.ArticleId"
-                    style="color: blue; text-decoration: none;">...more</a>
-            </p>
-            <div style="margin-top: 8px; display: flex; justify-content: space-between; font-size: 12px; color: #999;">
-                <span>Start: @article.StartDate.ToShortDateString()</span>
-                <span>End: @article.EndDate.ToShortDateString()</span>
-            </div>
-        </div>
+                            <p class="text-secondary">
+                                @(article.Body != null && article.Body.Length > 100 ? article.Body.Substring(0, 100) : article.Body ?? "No content available")
+                                <a asp-controller="Article" asp-action="Details" asp-route-id="@article.ArticleId" class="text-primary">...more</a>
+                            </p>
+
+                            <div class="d-flex justify-content-between text-muted small">
+                                <span>Start: @article.StartDate.ToShortDateString()</span>
+                                <span>End: @article.EndDate.ToShortDateString()</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
         }
-    }
-    else
-    {
-        <p style="color: #666;">No articles available.</p>
-    }
+        else
+        {
+            <p class="text-muted">No articles available.</p>
+        }
+    </div>
 </div>
